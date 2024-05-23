@@ -12,7 +12,7 @@ class VehicleDataSerializer(ModelSerializer):
 class VehicleDetailsSerializer(ModelSerializer):
     class Meta:
         model = VehicleData
-        fields = "vehicle_owner","vehicle_owner_contact"
+        fields = "vehicle_type", "vehicle_owner","vehicle_owner_contact"
 
     # def to_representation(self, instance):
     #     data = super().to_representation(instance)
