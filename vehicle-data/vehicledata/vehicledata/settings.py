@@ -78,7 +78,7 @@ WSGI_APPLICATION = "vehicledata.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vehicles',
+        'NAME': 'intozi_ai_suite',
         'USER': 'postgres',
         'PASSWORD': 'willofd',
         'HOST': 'localhost',
