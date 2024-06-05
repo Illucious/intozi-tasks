@@ -35,25 +35,25 @@ from .models import *
 
 #         return Response(grouped_data, status=status.HTTP_200_OK)
 
-# class VehicleDetails(APIView):
-#     def get(self, request, *args, **kwargs):
-#         with connection.cursor() as cursor:
-#             cursor.execute("""
-#                 SELECT vehicle_class,
-#                        json_agg(json_build_object(
-#                            'vehicle_owner', vehicle_owner,
-#                            'vehicle_owner_contact', vehicle_owner_contact
-#                        )) AS details
-#                 FROM api_vehicledata
-#                 GROUP BY vehicle_class
-#                 ORDER BY vehicle_class;
-#             """)
-#             result = cursor.fetchall()
+class VehicleDetails(APIView):
+    def get(self, request, *args, **kwargs):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                SELECT vehicle_class,
+                       json_agg(json_build_object(
+                           'vehicle_owner', vehicle_owner,
+                           'vehicle_owner_contact', vehicle_owner_contact
+                       )) AS details
+                FROM api_vehicledata
+                GROUP BY vehicle_class
+                ORDER BY vehicle_class;
+            """)
+            result = cursor.fetchall()
 
-#         # Constructing the response dictionary
-#         grouped_data = {row[0]: row[1] for row in result}
+        # Constructing the response dictionary
+        grouped_data = {row[0]: row[1] for row in result}
 
-#         return Response(grouped_data, status=status.HTTP_200_OK)
+        return Response(grouped_data, status=status.HTTP_200_OK)
 
 
 # class JSONAgg(Aggregate):
